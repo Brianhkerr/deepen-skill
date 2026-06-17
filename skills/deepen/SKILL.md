@@ -8,7 +8,7 @@ license: "MIT-0"
 
 Point this skill at any topic (`/deepen PPC`, `/deepen sleep apnea`, `/deepen pickleball paddle physics`). It does not summarize a field — it *acquires expertise* in it: mines the real experts (past canon + current frontier), takes defensible, falsifiable stances where they disagree, **attacks its own conclusions before committing them**, and writes the result as evergreen notes that **compound across sessions**. Run it again on the same topic later and it deepens the existing knowledge base rather than starting over.
 
-The method below is grounded in a verified research synthesis (Cooke's structured expert judgment, CFAR Double Crux, Matuschak evergreen notes, Anthropic orchestrator-worker). Where a step rests on practitioner convention rather than verified evidence, it says so — match that honesty in the output.
+The method below is grounded in a verified research synthesis (Cooke's structured expert judgment, CFAR Double Crux, Matuschak evergreen notes, Anthropic orchestrator-worker) — with its retrieval, fan-out, and self-verification steps tuned to the AI-research evidence (hybrid retrieval, context engineering, the limits of intrinsic self-correction, and LLM-judge bias). Where a step rests on practitioner convention rather than verified evidence, it says so — match that honesty in the output.
 
 ## Core principle (read first)
 **Expertise is measured track record, not credentials.** Across 33 structured-judgment studies, <1/3 of credentialed experts were statistically accurate, and experts are *systematically overconfident* — their stated uncertainty is far too narrow. So: never rank a source by fame, title, or follower count. Rank it by demonstrated, checkable accuracy. And widen your own confidence intervals — the honest answer is less certain than it feels.
@@ -66,7 +66,7 @@ Before creating a folder, check whether the topic is an alias of an existing one
 
 ### 0. Orient & reconcile
 - If `<KB_ROOT>/<topic>/` exists, read `_map.md` + `changelog.md` first — you are *deepening*, not restarting. Target the largest target-vs-current depth gaps from the dashboard.
-- **Reconcile with existing knowledge.** Search your existing notes/repos for related material before building anything new — if you already keep notes touching this topic, read them, build on them, and cross-link. Never silo a parallel duplicate. If findings contradict an existing note, flag it for supersede, don't quietly fork.
+- **Reconcile with existing knowledge.** Search your existing notes/repos for related material before building anything new. **Search both ways — by keyword *and* by meaning** (try synonyms and the topic's `aliases:`): query↔note vocabulary mismatch is the #1 reason related material gets missed and a duplicate KB gets forked. If a search comes up empty, **reformulate before concluding nothing exists** — retry with synonyms, or search with a *drafted answer* rather than the question. Read what you find, build on it, and cross-link. Never silo a parallel duplicate. If findings contradict an existing note, flag it for supersede, don't quietly fork.
 - If it's new, canonicalize the topic name, create the folder and `_map.md` scaffold, and **set target depths per sub-area from your goal**.
 
 ### Effort tiering — pick the mode first
@@ -83,6 +83,8 @@ Spawn one research subagent per sub-question (use your runtime's subagent / task
 - **Frontier** — who's actually pushing it *now* (recent, dated sources).
 
 Do the empirical research *first*. Reserve "expert opinion" for genuinely frontier-of-the-unknowable questions where data runs out — that's the only place elicitation belongs.
+
+> **Fan out only for decomposable breadth.** Parallel subagents help when sub-questions are genuinely independent; the payoff tracks *total tokens spent across separate context windows* (the dominant factor) at a steep multiple of single-agent cost — so spend knowingly and don't fan out tightly-coupled work. **Writes stay single-threaded:** never let parallel agents write the KB — one writer, always, or the notes corrupt.
 
 > **Honesty note on "polling experts":** this skill synthesizes experts' *published record* — papers, talks, dated public calls. It does **not** interview live people, and it does **not** fabricate expert personas or invented credentials. If you frame a "what would expert X say" view, it must be grounded in that person's actual sourced positions. Frame outputs that way; don't imply primary elicitation that didn't happen.
 
@@ -101,7 +103,7 @@ For each live disagreement, run an adapted **Double Crux** procedure:
 
 ### 4.5. Stress-test before committing (red-team + validation gates)
 Before any stance is written to `disagreements.md`, and before a `principles.md` note is treated as solid, put it through three gates:
-- **Adversarial self-falsification.** For each stance, spawn (or role-play, on a light pass) a **skeptic whose only job is to refute it** using the strongest available counter-evidence. Survives strong refutation → keep, note "survived: <best counter-argument and why it failed>." Survives only weakly → **downgrade confidence** and say why. Skeptic wins → flip or retract.
+- **Adversarial self-falsification.** For each stance, spawn (or role-play, on a light pass) a **skeptic whose only job is to refute it** using the strongest available counter-evidence. The skeptic must marshal **external** evidence (re-search / re-fetch sources) — bare "let me reconsider" self-correction is unreliable and doesn't count as a gate. When you score competing claims or options, **randomize their presentation order** (order alone can swing a model's judgment by >10%) and never let one pass be both sole author and sole judge of a claim — use an independent skeptic. Survives strong refutation → keep, note "survived: <best counter-argument and why it failed>." Survives only weakly → **downgrade confidence** and say why. Skeptic wins → flip or retract.
 - **Teach-back.** Can the claim be explained simply, from mechanism, without jargon hand-waving? If it can't be explained, it isn't understood — mark it thin.
 - **Prediction.** Does the model correctly predict a *known* outcome in the domain (a documented case, benchmark, or historical result)? A model that can't retrodict a known result is not yet expertise — flag the gap.
 A stance/principle that passes all three is earned; one that was never tested is not.
