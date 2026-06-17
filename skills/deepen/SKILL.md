@@ -1,7 +1,7 @@
 ---
 name: "deepen"
 description: "Point it at any topic to build genuine mastery into a compounding knowledge base: weights experts by checkable track record, takes falsifiable self-tested stances, ships ranked tactics tuned to your context."
-license: "MIT"
+license: "MIT-0"
 ---
 
 # /deepen — build genuine domain mastery into an accreting knowledge base

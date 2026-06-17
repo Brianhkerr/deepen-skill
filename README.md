@@ -96,4 +96,4 @@ Re-run it on the same topic any time; it deepens the existing knowledge base ins
 
 ## License
 
-MIT — see [LICENSE](LICENSE).
+MIT-0 (MIT No Attribution) — see [LICENSE](LICENSE). Free to use, modify, and redistribute, no attribution required.
