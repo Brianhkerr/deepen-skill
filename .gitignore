@@ -1,0 +1,3 @@
+# Users' own knowledge bases shouldn't be committed by default.
+knowledge/
+.DS_Store
