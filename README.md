@@ -54,14 +54,26 @@ knowledge/ppc/
 
 Every run ends with a tight brief: what I now know (with confidence), where I took a stance (and what would flip it), the ranked tactics, and the thin spots worth a deeper pass.
 
+## See a real run
+
+[`examples/deliberate-practice/`](examples/deliberate-practice/) is a genuine `/deepen` run, committed verbatim — real citations, falsifiable stances on a live expert disagreement (Ericsson vs. the Macnamara/Hambrick meta-analyses), and one debate deliberately held at LOW confidence and flagged as thin. Start with [`disagreements.md`](examples/deliberate-practice/disagreements.md).
+
 ## Install
 
+**ClawHub** (OpenClaw and compatible agents):
+
 ```bash
-# with the skills CLI (replace with this repo's URL once published)
-npx skills add <your-repo-url> --skill deepen
+clawhub install deepen
 ```
 
-Or copy `skills/deepen/SKILL.md` into your agent's skills directory (e.g. `~/.claude/skills/deepen/` for Claude Code).
+**Git / Claude Code** — clone or copy the skill folder into your skills directory:
+
+```bash
+git clone https://github.com/Brianhkerr/deepen-skill.git
+cp -r deepen-skill/skills/deepen ~/.claude/skills/deepen
+```
+
+Or just copy `skills/deepen/SKILL.md` into your agent's skills directory (e.g. `~/.claude/skills/deepen/` for Claude Code).
 
 ## Usage
 
