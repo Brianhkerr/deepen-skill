@@ -6,6 +6,12 @@ A **real `/deepen` run**, committed verbatim as the hero example — so you can 
 > Per the skill's own honesty rule, this is a genuine run with real citations — never a fabricated
 > sample.
 
+> **Schema note:** this run predates the current (v2) file schema and uses the earlier layout
+> (`_map.md`, `tactics.md`). The current skill expands the file set — `_index.md`, `sources/`,
+> `playbook.md`, `failure-modes.md`, `benchmarks.md`, `frontier.md`, `glossary.md`, `cases.md` — but the
+> *method* shown here (track-record weighting, falsifiable stances, red-teaming) is unchanged. Left
+> verbatim on purpose: it's a real artifact, not a re-rendered mockup.
+
 ## [`deliberate-practice/`](./deliberate-practice/)
 
 `/deepen deliberate practice` — chosen because it has a live, *checkable* expert disagreement
