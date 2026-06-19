@@ -33,3 +33,13 @@
 ## Open
 - Append Pomodoro ON result and finalize the third-pair comparison.
 - Consider a contested/frontier topic as a 4th pair to test where ON should separate most from OFF.
+
+---
+
+## Addendum — consensus-buster upgrade (2026-06-19)
+
+**Brian's critique (correct):** an LLM regresses to the *volume-weighted consensus*; the best answer is often seldom-written/tacit/closely-held and outperforms. So "answers don't change, evidence grows" was a weak result — and partly an **artifact of the test topics** (standing desks, spaced repetition = settled-science, consensus-is-right). The skill's real job is to **beat consensus where it's beatable**.
+
+**Upgrade applied** to both `/deepen` and `/master`: (1) a "beat the consensus" core principle (volume ≠ evidence; divergence is the deliverable; honest corpus ceiling); (2) a **§3.5 consensus-buster** step (name the modal answer → hunt highest-track-record dissent + seldom-written frontier → adversarially test if the challenger wins); (3) a **tacit-frontier** note (mine the rawest primary record; name what's unwritten; hand off to /apply + the operator's own data).
+
+**Re-run pending on a CONTESTED topic — Amazon PPC** (consensus advice there is genuinely mediocre; operator alpha is real). Success criterion shifts from "more defensible" to **"did it diverge from consensus toward a better, defensible answer?"** — i.e. did the consensus-buster produce ≥1 load-bearing call a vanilla-consensus answer would *not*, that survives the refutation gate.
