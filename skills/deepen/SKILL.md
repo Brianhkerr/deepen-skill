@@ -151,7 +151,12 @@ The default LLM answer *is* the consensus; this step manufactures the contest th
 1. **State the consensus** — write down the modal, volume-weighted answer a vanilla LLM or textbook would give. Name it explicitly so it's a *target*, not an anchor.
 2. **Hunt the challenger** — go find the **highest-track-record dissent** and the **seldom-written frontier** claim that beats it (proven operators, recent primary work, contrarians with checkable calls, niche communities). Weight by record, not by how common the view is.
 3. **Run the contest** — adversarially test (reuse the §4.5 gates): does the challenger actually win on evidence, or is it contrarian noise? The challenger must *earn* the upset; default to consensus only after it survives a real attempt to beat it.
-4. **Record the verdict** in `disagreements.md` as `consensus → challenger → who-wins-and-why`, with calibrated confidence + falsifier. **A challenger that wins is the KB's highest-value output.** Consensus that survives a genuine attack is also a result — but write "survived attack," never assume it.
+4. **Record the verdict** — every verdict resolves to **one of THREE outcomes**, never a forced binary:
+   - **challenger wins** — the dissent/frontier beats consensus on evidence. The KB's highest-value output.
+   - **consensus survives attack** — write "survived attack: <best challenger and why it failed>," never assume it.
+   - **still-contested** — *neither* side wins after a genuine attempt. **This is a legitimate, required verdict** — do NOT manufacture a call where the evidence is honestly split. Record it as `contested` and name the **crux** (the finding that would resolve it) + what data is missing. Forcing certainty on a genuinely-open question (e.g. dietary salt, saturated fat) is a failure mode, not rigor.
+   Write it in `disagreements.md` as `consensus → challenger → who-wins-and-why (or contested + crux)`, with calibrated confidence + falsifier.
+5. **Retrieval is mandatory.** Each verdict must cite **≥1 dated source** found this run (the consensus-buster's whole point is beating parametric memory). A verdict resting only on the model's prior is marked **`parametric-only`** and treated as untrustworthy until a dated source backs it — never let an un-retrieved memory pose as a researched call.
 
 ### 4. Adjudicate disagreements → `disagreements.md`
 For each live disagreement, run an adapted **Double Crux**: (1) state it concretely; (2) operationalize what the sides actually differ on; (3) find the **crux** — the load-bearing belief that, if false, flips the conclusion; (4) **take a stance** with calibrated confidence (+ *why*) and the **explicit falsifier**; (5) be method-pluralistic on aggregation — no single rule settles conflicting experts. Refusing to take a position is a failure; a wrong-but-falsifiable stance is recoverable, a mushy "both sides have merit" is not.
@@ -165,6 +170,8 @@ Before any stance is written to `disagreements.md`, and before a `principles.md`
 - **Teach-back.** Explainable simply, from mechanism, without jargon hand-waving? If not, mark it thin.
 - **Prediction.** Does it correctly retrodict a *known* outcome (documented case, benchmark, historical result)? Can't retrodict → flag the gap.
 A stance/principle that passes all three is earned; one never tested is not.
+
+**Calibration discipline (the mid-band trap).** Measured failure mode: calls in the **0.6–0.8 confidence band are the least reliable** — "leaning but unsure" is where overconfidence hides (a backtest put that band near coin-flip accuracy while 0.85+ calls held). So: treat 0.6–0.8 as a **yellow zone** — before committing such a call, either (a) find the one piece of evidence that would push it ≥0.8, or (b) drop it to `contested`/≤0.55. Reserve 0.8+ for calls with a clear evidentiary backbone. Widen every interval for known overconfidence; the honest answer is less certain than it feels.
 
 ### 5. Knowledge-base write (evergreen notes)
 Write durable findings into `principles.md` as **atomic, concept-oriented, densely-linked** notes (each with its `misconceptions:` line, history woven where load-bearing, and cite-or-flag tags). Populate `failure-modes.md`, `benchmarks.md`, `glossary.md`, and `cases.md` as the research surfaces them. Update the `_index.md` dashboard (bump depth, confidence, source count, last-verified) and the **read-first router**. Append to `changelog.md`.
