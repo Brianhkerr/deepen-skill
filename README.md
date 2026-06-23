@@ -90,9 +90,7 @@ Every run ends with a tight brief: what I now know (with confidence), where I to
 
 ## See a real run
 
-[`examples/deliberate-practice/`](examples/deliberate-practice/) is a genuine `/deepen` run, committed verbatim — real citations, falsifiable stances on a live expert disagreement (Ericsson vs. the Macnamara/Hambrick meta-analyses), and one debate deliberately held at LOW confidence and flagged as thin. Start with [`disagreements.md`](examples/deliberate-practice/disagreements.md).
-
-> The example predates the current (v2) file schema — it shows the core method under the earlier `_map.md` / `tactics.md` layout. The skill now expands the file set (`_index.md`, `sources/`, `playbook.md`, `failure-modes.md`, `benchmarks.md`, `frontier.md`, `glossary.md`, `cases.md`); the *method* it demonstrates is unchanged.
+[`examples/deliberate-practice/`](examples/deliberate-practice/) is a genuine `/deepen` run, committed verbatim in the full file schema — a [`sources/`](examples/deliberate-practice/sources/) corpus of 8 source digests (each re-verified against the primary record), falsifiable stances on a live expert disagreement (Ericsson vs. the Macnamara/Hambrick meta-analyses), and one debate deliberately held at LOW confidence and flagged as thin. Start with [`_index.md`](examples/deliberate-practice/_index.md) — the one-context map — then [`disagreements.md`](examples/deliberate-practice/disagreements.md), the highest-value file.
 
 ## Quickstart
 
