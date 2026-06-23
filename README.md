@@ -14,7 +14,20 @@ Works anywhere the [Agent Skills](https://www.anthropic.com/engineering/equippin
 
 ---
 
-## Why this beats Deep Research and one-shot "expert" tools
+## Who it's for
+
+**Built first for people who build with AI.** If you use Claude Code, Claude.ai, or your own agents, `/deepen` gives you what a chat answer can't: a knowledge base **engineered for an LLM to load and reason over** — front-matter metadata, a one-context index, self-contained chunked notes, a glossary as retrieval bridge. It's drop-in context / RAG substrate for your own agents that gets sharper every run, not a transcript you scroll back through.
+
+It pays off just as well if you're:
+- **An operator, researcher, or analyst** staking a decision on the answer — you get cited, falsifiable positions *and the exact evidence that would flip each*, not hedged "experts disagree" summaries.
+- **A second-brain / Obsidian user** — evergreen notes with `[[wikilinks]]` and YAML front-matter that graph natively in your vault and **compound** instead of evaporating in chat history.
+- **Anyone serious about mastering a field** — it builds toward the depth of someone with 10,000 hours in it, and deepens every time you come back.
+
+Just want one fast report you'll never revisit? Use Deep Research — and here's [why that's a different job](#why-it-matters).
+
+## Why it matters
+
+You get **decision-grade expertise that compounds into an asset you own** — cited, stress-tested positions, written as a knowledge base your future self *and your agents* can load, instead of prose you read once and lose. The more you run it on a topic, the sharper that asset gets.
 
 Deep Research and friends are excellent at one job: producing a **single, well-cited report on demand**. That's also their ceiling. `/deepen` is built for a different job — *accumulating mastery you keep* — and differs on five axes that matter when you'll actually build on the answer:
 
@@ -81,22 +94,35 @@ Every run ends with a tight brief: what I now know (with confidence), where I to
 
 > The example predates the current (v2) file schema — it shows the core method under the earlier `_map.md` / `tactics.md` layout. The skill now expands the file set (`_index.md`, `sources/`, `playbook.md`, `failure-modes.md`, `benchmarks.md`, `frontier.md`, `glossary.md`, `cases.md`); the *method* it demonstrates is unchanged.
 
+## Quickstart
+
+1. **Install it** — one line below (Claude Code, ClawHub, Claude.ai, or API).
+2. **Run it** — `/deepen <topic>`, e.g. `/deepen sleep apnea`.
+3. **Find your KB** — in `./knowledge/<topic>/` (or wherever you set `DEEPEN_KB`). Re-run any time to deepen it.
+
+No API keys or extra tools required — a web-search-capable agent is enough. Everything below is just detail.
+
 ## Install
 
-**Git / Claude Code** — clone or copy the skill folder into your skills directory:
+A skill is just a folder with a `SKILL.md` (plus an optional `CONNECTORS.md`). Any Agent Skills runtime picks it up once it's in the right place.
+
+**Claude Code** — copy the folder into a skills directory:
 
 ```bash
 git clone https://github.com/Brianhkerr/deepen-skill.git
-cp -r deepen-skill/skills/deepen ~/.claude/skills/deepen
+cp -r deepen-skill/skills/deepen ~/.claude/skills/deepen      # personal — all projects
+# or:  cp -r deepen-skill/skills/deepen .claude/skills/deepen  # this repo only — shareable with a team
 ```
-
-Or just copy `skills/deepen/SKILL.md` into your agent's skills directory (e.g. `~/.claude/skills/deepen/` for Claude Code).
 
 **ClawHub** (OpenClaw and compatible agents):
 
 ```bash
 clawhub install deepen
 ```
+
+**Claude.ai / Claude API** — `/deepen` is a standard Agent Skill, so add it as a custom Skill the way your surface supports: upload the `skills/deepen` folder in Claude.ai's Skill settings, or register it through the Claude API / Agent SDK. Anthropic's [Agent Skills guide](https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills) has the current path for each.
+
+After installing, start a fresh session and type `/deepen` — if it autocompletes or responds, it's loaded.
 
 ## Requirements
 
