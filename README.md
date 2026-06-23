@@ -98,6 +98,15 @@ Or just copy `skills/deepen/SKILL.md` into your agent's skills directory (e.g. `
 clawhub install deepen
 ```
 
+## Requirements
+
+**None beyond a capable agent with web search.** `/deepen` runs on any Agent Skills–compatible runtime — Claude Code, Claude.ai, the Claude API, or a compatible agent. A web search + fetch tool is the only hard dependency; everything else is optional and purely additive:
+
+- **Parallel subagents + model tiering** (e.g. Claude Code's sub-agents) — used for the deep-pass orchestrator-worker fan-out *if your runtime has them*; if it's single-agent, the skill runs the same structure sequentially. Either way it works.
+- **Extra research pools** — academic APIs (arXiv, Semantic Scholar, PubMed), Reddit/HN, `yt-dlp` for talks/podcasts, and semantic-search keys (Exa/Tavily/Brave). Each non-overlapping index widens recall. Copy-paste recipes are bundled in [`skills/deepen/CONNECTORS.md`](skills/deepen/CONNECTORS.md) — the keyless ones need no signup.
+
+The skill **never blocks because a pool or feature is missing** — it uses what your runtime has and notes in the KB what it couldn't reach, so a later run can widen there.
+
 ## Usage
 
 ```
@@ -115,6 +124,8 @@ Re-run it on the same topic any time; it deepens the existing knowledge base ins
 | Variable | Default | Purpose |
 |---|---|---|
 | `DEEPEN_KB` | `./knowledge/` | Root folder for all topic KBs. Point it at an Obsidian vault or wherever your durable notes live. |
+
+The skill resolves the knowledge-base root in this order: an explicit location you name in the request → `DEEPEN_KB` → the `./knowledge/` default, and it states the resolved path on the first line of every run so you can redirect it. **No shell to set an env var** (e.g. a hosted chat)? Just say where to write in your message ("put the KB in `<path>`"), or let it use the default and save the notes it returns.
 
 The skill adapts to your runtime: if it can spawn parallel subagents and select per-worker models, it runs the tiered orchestrator-worker flow (cheap workers for fetch/extract, a frontier model for judgment); if it's single-agent, it runs the same structure sequentially.
 

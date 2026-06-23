@@ -1,6 +1,6 @@
 ---
 name: "deepen"
-description: "Point at any topic to build a compounding, domain-general expertise knowledge base: a high-fidelity source corpus, track-record-weighted experts, reconciled falsifiable stances, failure modes, benchmarks, and a proven playbook — built as evergreen notes a future agent can load and reason over."
+description: "Point at any topic to build a compounding, domain-general expertise knowledge base: a high-fidelity source corpus, track-record-weighted experts, reconciled falsifiable stances, failure modes, benchmarks, and a proven playbook — built as evergreen notes a future agent can load and reason over. Use when the user wants to deeply master, research, or build durable, defensible knowledge on a topic — not for a quick one-off answer or a single throwaway report."
 license: "MIT-0"
 ---
 
@@ -44,7 +44,7 @@ A general LLM regresses to the **volume-weighted consensus** — the modal answe
 - **The corpus ceiling (be honest).** Retrieval can elevate the rare-but-written above the popular-but-wrong; it **cannot** reach genuinely unwritten alpha. Where the edge is tacit, say so and route to primary sources — never launder consensus as expertise.
 
 ## Knowledge base location & structure
-Each topic gets a folder under your knowledge-base root: `<KB_ROOT>/<topic-kebab>/`. **`KB_ROOT` defaults to `./knowledge/`** (relative to where you invoke the skill); override it by setting the `DEEPEN_KB` environment variable, or point it at wherever your durable notes already live — **including an Obsidian vault** (the notes use `[[wikilinks]]` and YAML front-matter, so they render and graph natively in Obsidian). If any of the knowledge base is sensitive, keep it out of public repos.
+Each topic gets a folder under your knowledge-base root: `<KB_ROOT>/<topic-kebab>/`. **Resolve `<KB_ROOT>` once at the start of every run, in this order:** (1) if the user named a location in the request, use it; (2) else if a `DEEPEN_KB` environment variable is set, use it — on a shell runtime, read it explicitly (e.g. `echo "$DEEPEN_KB"`); (3) else default to **`./knowledge/`**, relative to where the skill is invoked. **State the resolved path in your opening line** so the user can redirect it before you write. Point it at wherever your durable notes already live — **including an Obsidian vault** (the notes use `[[wikilinks]]` and YAML front-matter, so they render and graph natively there). On a runtime with no shell or no persistent disk (e.g. a hosted chat sandbox), skip the env-var step: write to the working directory if one persists, otherwise return the notes inline for the user to save. Never silently skip writing because a path is unset — always fall back to the default and say where you wrote. If any of the knowledge base is sensitive, keep it out of public repos.
 
 **Files scale to the domain** — a thin topic collapses several of these into one; a deep one splits them. The schema defines the slots; fill what the domain warrants. Don't force empty files.
 
@@ -127,6 +127,8 @@ Break the topic into 4–6 sub-questions spanning: foundational mechanisms + his
 
 ### 2. Research fan-out (parallel subagents)
 Spawn one research subagent per sub-question (or work them sequentially if single-agent). Each mines BOTH **canon** (foundational texts/experts) and **frontier** (who's pushing it *now*, dated sources), and writes high-fidelity `sources/` digests as it goes. Do empirical research *first*; reserve "expert opinion" for genuinely frontier-of-the-unknowable questions.
+
+**Minimum viable setup: a web search + fetch tool alone is enough to run this skill.** Every other pool below is *additive recall*, not a requirement — none needs to be installed for a valid run. Never block or abort because a pool is unavailable; use what your runtime has, and note in `_index.md` which pools you couldn't reach so a future run can widen there. Copy-paste request recipes for the keyless and keyed backends are in the bundled [`CONNECTORS.md`](CONNECTORS.md).
 
 **Spread workers across DISTINCT source pools — not all at one search index.** Parallel fan-out only widens recall if workers draw from non-overlapping pools; ten workers on one index just resurface the same pages. Useful pools (use whichever your runtime can reach; all are public unless noted):
 - **Web search + fetch** — your search provider + a fetch tool (fetch many URLs concurrently). The baseline.
