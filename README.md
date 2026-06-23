@@ -10,6 +10,8 @@ Most "research" tools — Deep Research, generic "be an expert in X" prompts, RA
 /deepen pickleball paddle physics
 ```
 
+**See it before you trust it.** [`examples/deliberate-practice/`](examples/deliberate-practice/) is a real `/deepen` run committed verbatim — a [`sources/`](examples/deliberate-practice/sources/) corpus of 8 digests with **every load-bearing figure re-verified against the primary record**, falsifiable stances on a live debate, and one call deliberately held at LOW confidence and flagged as thin. Read the output before you install anything.
+
 Works anywhere the [Agent Skills](https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills) open standard is supported — Claude Code, Claude.ai, the Claude API, and compatible runtimes. Output is plain Markdown with `[[wikilinks]]` and YAML front-matter, so the knowledge base drops straight into an **Obsidian vault** (or any Markdown notes system) and graphs natively.
 
 ---
@@ -68,7 +70,7 @@ It's also tuned to the AI-research evidence on **retrieval** (hybrid/semantic se
 
 ## What it produces
 
-A folder per topic under your knowledge-base root (`./knowledge/<topic>/` by default, or set `DEEPEN_KB` — point it at an Obsidian vault and it just works). Files scale to the domain; thin topics collapse slots, deep ones split them:
+A folder per topic under your knowledge-base root (`./knowledge/<topic>/` by default, or set `DEEPEN_KB` — point it at an Obsidian vault and the notes graph natively). Files scale to the domain; thin topics collapse slots, deep ones split them:
 
 ```
 knowledge/ppc/
